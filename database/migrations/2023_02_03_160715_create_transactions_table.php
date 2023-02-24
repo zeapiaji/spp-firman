@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('officer_id');
             $table->foreignId('student_id');
             $table->foreignId('school_fees_id');
+            $table->foreignId('user_month_id');
             $table->timestamps();
         });
     }

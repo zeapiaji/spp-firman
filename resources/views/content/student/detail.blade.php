@@ -37,10 +37,10 @@
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">Nis</p>
+                  <p class="mb-0">Tahun Ajaran</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">{{ $students->nis }}</p>
+                  <p class="text-muted mb-0">{{ $students->SchoolFee->school_year }}</p>
                 </div>
               </div>
               <hr>

@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class SchoolFee extends Model
 {
     use HasFactory;
+    protected $guarded=['id']; 
+
+    public function User()
+    {
+        return $this->hasMany(User::class);
+    }
 }

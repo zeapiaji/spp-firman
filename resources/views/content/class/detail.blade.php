@@ -42,8 +42,8 @@
                   <div class="card">
                     <div class="card-header">
                       <h3 class="card-title">Tabel {{ $title }}</h3>
-                      <br>
-                        <a class="btn btn-success mt-2" href="/class/create"><i class="fas fa-plus"></i> Tambah Data</a>
+                      {{-- <br>
+                        <a class="btn btn-success mt-2" href="/class/create"><i class="fas fa-plus"></i> Tambah Data</a> --}}
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -54,7 +54,10 @@
                             <th>NIS</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Opsi</th>
+                            <th>Kelas</th>
+                            <th>Alamat</th>
+                            <th>No Telepon</th>
+                            {{-- <th>Opsi</th> --}}
                           </tr>
                         </thead>
                         <tbody>
@@ -64,10 +67,13 @@
                             <td>{{ $student->nis }}</td>
                             <td>{{ $student->name }}</td>
                             <td>{{ $student->email }}</td>
-                            <td class="text-center">
+                            <td>{{ $student->ClassModel->class_name }}</td>
+                            <td>{{ $student->address }}</td>
+                            <td>{{ $student->phone_number }}</td>
+                            {{-- <td class="text-center">
                               <a class="btn btn-primary" href="/class/{{  $student->id }}"><i class="fas fa-eye"></i></a>
                               <a class="btn btn-warning" href="/class/{{  $student->id }}/edit"><i class="fas fa-pen"></i></a>
-                              <a class="btn btn-danger" href="/class/delete/{{  $student->id }}" data-toggle="modal" data-target="#modalDelete{{ $student->id}}"><i class="fas fa-trash"></i></a>
+                              <a class="btn btn-danger" href="/class/delete/{{  $student->id }}" data-toggle="modal" data-target="#modalDelete{{ $student->id}}"><i class="fas fa-trash"></i></a> --}}
 
                               <div class="modal" tabindex="-1" role="dialog" id="modalDelete{{ $student->id}}">
                                 <div class="modal-dialog" role="document">

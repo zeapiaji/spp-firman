@@ -7,13 +7,6 @@
         <div class="col-sm-6">
           <h1>{{ $title }}</h1>
 
-          <div class="col-12">
-          @if (Session::has('success'))
-          <div class="alert alert-success" role="alert"
-            {{Session::get('success')}}
-          </div>
-          @endif
-        </div>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -25,6 +18,26 @@
     </div><!-- /.container-fluid -->
   </section>
         <!-- Main content -->
+        <div class="col-12">
+          @if (Session('success'))
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{Session('success')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          @endif
+        </div>
+        <div class="col-12">
+          @if (Session('failed'))
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{Session('failed')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          @endif
+        </div>
         <section class="content">
             <div class="container-fluid">
               <div class="row">
@@ -59,13 +72,13 @@
                                 <div class="modal-dialog" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title">Hapus Siswa</h5>
+                                      <h5 class="modal-title">Hapus Kelas</h5>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                      <p>Apakah anda yakin ingin menghapus siswa {{ $class->name}}</p>
+                                      <p>Apakah anda yakin ingin menghapus Kelas {{ $class->name}}</p>
                                     </div>
                                     <div class="modal-footer">
                                       <form action="/class/{{ $class->id}}/delete" method="POST">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\student;
 use App\Models\ClassModel;
+use App\Models\SchoolFee;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -32,7 +33,8 @@ class StudentController extends Controller
     {
         $title = "Tambah Siswa";
         $classes = ClassModel::get();
-        return view('content.student.create', compact('title', 'classes'));
+        $years = SchoolFee::get();
+        return view('content.student.create', compact('title', 'classes', 'years'));
     }
 
     /**
@@ -52,6 +54,7 @@ class StudentController extends Controller
                 'name'             => 'required',
                 'address'          => 'required',
                 'phone_number'     => 'required',
+                'school_fee_id'    => 'required'
                 ]);
 
                 student::create([
@@ -62,7 +65,8 @@ class StudentController extends Controller
                     'name'  =>  $validatedData['name'],
                     'address'  =>  $validatedData['address'],
                     'phone_number'  =>  $validatedData['phone_number'],
-                    'password'  =>  Hash::make(Str::random(16))
+                    'password'  =>  Hash::make(Str::random(16)),
+                    'school_fee_id' => $validatedData['school_fee_id']
                 ]);
 
                 return redirect('/students');
@@ -91,9 +95,10 @@ class StudentController extends Controller
     public function edit($nisn)
     {
         $title = "Edit Siswa";
-        $classes = ClassModel::get();
+        // $classes = ClassModel::get();
         $students = student::where('nisn', $nisn)->get();
-        return view('content.student.edit', compact('title', 'students', 'classes'));
+        $years = SchoolFee::get();
+        return view('content.student.edit', compact('title', 'students', 'classes', 'years'));
     }
 
     /**

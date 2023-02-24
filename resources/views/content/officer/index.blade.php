@@ -5,11 +5,10 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Daftar Petugas</h1>
+          <h4>Daftar Petugas</h4>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Petugas</a></li>
             <li class="breadcrumb-item active">{{ $title }}</li>
           </ol>
         </div>
@@ -39,11 +38,15 @@
                           </tr>
                         </thead>
                         <tbody>
-                          @foreach ($officer as $officer) 
+                          @foreach ($officers as $officer) 
                           <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $officer->officers_name }}</td>
-                            <td>{{ $officer->level }}</td>
+                            @if ($officer->level == 1)
+                                <td>Admin</td>
+                            @else
+                                <td>Petugas</td>
+                            @endif
                             <td class="text-center">
                               <a class="btn btn-primary" href="/officer/{{ $officer->id }}"><i class="fas fa-eye"></i></a>
                               <a class="btn btn-warning" href="/officer/{{ $officer->id }}/edit"><i class="fas fa-pen"></i></a>

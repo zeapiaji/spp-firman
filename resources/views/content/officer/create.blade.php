@@ -44,10 +44,10 @@
                   </div>
                   <div class="mb-3">
                       <label for="level">Bidang :</label>
-                      <select class="form-control" name="level" id="">
+                      <select class="form-control" name="level" id="level">
                         <option selected disabled>Pilih Level</option>
-                        <option value="admin">Admin</option>
-                        <option value="petugas">Petugas</option>
+                        <option value="1">Admin</option>
+                        <option value="2">Petugas</option>
                       </select>
                   </div>
                   <button type="submit" class="btn btn-primary">Submit</button>

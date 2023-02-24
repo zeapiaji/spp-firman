@@ -9,8 +9,10 @@ class ClassModel extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function Student()
     {
         return $this->hasMany(student::class);
     }
-}
+}   

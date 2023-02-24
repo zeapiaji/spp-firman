@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('school_fees', function (Blueprint $table) {
             $table->id();
             $table->year('school_year');
-            $table->integer('year');
+            $table->integer('price');
             $table->timestamps();
         });
     }

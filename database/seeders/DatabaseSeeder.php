@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\UserMonth;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,5 +24,11 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call(ClassSeeder::class);
         $this->call(StudentSeeder::class);
+        $this->call(RoleSeeder::class);
+        $this->call(OfficerSeeder::class);
+        $this->call(SchoolFeeSeeder::class);
+        $this->call(MonthSeeder::class);
+        $this->call(UserMonthSeeder::class);
+
     }
 }

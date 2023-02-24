@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('password');
             $table->foreignId('class_id');
+            $table->foreignId('school_fee_id');
             $table->text('address');
             $table->string('phone_number');
             $table->timestamps();

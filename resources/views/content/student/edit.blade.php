@@ -56,6 +56,15 @@
                         </select>
                     </div>
                     <div class="mb-3">
+                      <label for="class">Tahun Ajaran :</label>
+                      <select name="school_fee_id" id="class" class="form-control">
+                        <option value="{{ $student->school_fee_id }}">{{ $student->SchoolFee->school_year }}</option>
+                        @foreach ($years as $year)
+                            <option value="{{ $year->id }}">{{ $year->school_year }}</option>
+                        @endforeach
+                      </select>
+                  </div>
+                    <div class="mb-3">
                         <label for="email">Email :</label>
                         <input type="email" name="email" id="email" class="form-control" value="{{ $student->email}}">
                     </div>

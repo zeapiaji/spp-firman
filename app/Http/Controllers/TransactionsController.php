@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\officer;
+use App\Models\student;
 use App\Models\transaction;
+use App\Models\User;
+use App\Models\UserMonth;
 use Illuminate\Http\Request;
 
 class TransactionsController extends Controller
@@ -14,7 +18,7 @@ class TransactionsController extends Controller
      */
     public function index()
     {
-        $title = "Daftar Siswa";
+        $title = "Riwayat Transaksi";
         $transactions = transaction::get();
         return view('content.transactions.index', compact('title', 'transactions'));
     }
@@ -26,8 +30,12 @@ class TransactionsController extends Controller
      */
     public function create()
     {
-        $title = "Tambah Siswa";
-        return view('content.transactions.create', compact('title'));
+        $title = "Tambah Transaksi";
+        $transactions = transaction::get();
+        $students = student::get();
+        $officers = User::get();
+        $months =   UserMonth::where('status', 0)->get();
+        return view('content.transactions.create', compact('title', 'transactions', 'students', 'officers', 'months'));
     }
 
     /**
@@ -38,7 +46,26 @@ class TransactionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+            $validatedData = $request->validate([
+             'student'         => 'required',
+             'school_years'               => 'required',
+             'price'               => 'required',
+             'user_month_id'               => 'required',
+            ]);
+
+            // Ubah Officer_id jeng shool_fees_id na ku data nudibutuhken
+           $data = transaction::create([
+                'officer_id' => 0,
+                'student_id' => $request->student,
+                'user_month_id' => $request->user_month_id,
+                'school_fees_id' => 0,
+            ]);
+
+            // transaction::create($validatedData);
+
+            return redirect('/transactions')->with('success','SPP ' .$request->name. ' berhasil ditambahkan');
+        
     }
 
     /**

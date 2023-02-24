@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\officer;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,8 @@ class OfficerController extends Controller
     public function index()
     {
         $title = "Daftar petugas";
-        $officer = officer::get();
-        return view('content.officer.index', compact('title', 'officer'));
+        $officers = User::get();
+        return view('content.officer.index', compact('title', 'officers'));
     }
 
     /**
@@ -27,7 +28,7 @@ class OfficerController extends Controller
     public function create()
     {
         $title = "Tambah Petugas";
-        $classes = officer::get();
+        $classes = User::get();
         // dd($classes);
         return view('content.officer.create', compact('title', 'classes'));
     }
@@ -41,21 +42,21 @@ class OfficerController extends Controller
     public function store(Request $request)
     {
         {
-
+            // dd($request->all());
             $validatedData = $request->validate([
-             'username' => 'required',
-             'password' => 'required',
-             'officers_name' => 'required',
-             'level' => 'required',
+             'username'         => 'required',
+             'password'         => 'required',
+             'officers_name'    => 'required',
+             'level'            => 'required',
             ]);
-     
-            officer::create($validatedData);
-     
+
+            User::create($validatedData);
+
             return redirect('/officer')->with('success','Petugas ' .$request->name. ' berhasil ditambahkan');
         }
     }
 
-    /**
+    /** p
      * Display the specified resource.
      *
      * @param  int  $id
@@ -64,7 +65,7 @@ class OfficerController extends Controller
     public function show($id)
     {     
         $title = "Detail Petugas";
-        $officer = officer::where('id', $id)->first();
+        $officer = User::where('id', $id)->first();
 
         return view ('content.officer.detail',compact('title', 'officer'));
     }
@@ -78,7 +79,7 @@ class OfficerController extends Controller
     public function edit($id)
     {
         $title = "Edit Petugas";
-        $officer = officer::where('id', $id)->first();
+        $officer = User::where('id', $id)->first();
         return view('content.officer.edit', compact('title', 'officer'));
     }
 
@@ -97,7 +98,7 @@ class OfficerController extends Controller
             'level'                      => 'required',
             ]);
 
-            officer::where('id', $id)->update($validatedData);
+            User::where('id', $id)->update($validatedData);
 
             return redirect('/officer')->with('pesan', 'berhasil di upadate :)');
     }
@@ -110,7 +111,7 @@ class OfficerController extends Controller
      */
     public function destroy($id)
     {
-        officer::where('id',$id)->delete();
+        User::where('id',$id)->delete();
 
         return redirect('/officer')->with('success','Petugas berhasil dihapus');
     }

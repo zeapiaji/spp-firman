@@ -38,8 +38,8 @@
                   <div class="mb-3">
                       <label for="password">Level :</label>
                       <select class="form-control" name="level" id="">
-                        <option value="admin" {{ $officer->level == "admin" ? "selected" : '' }}>Admin</option>
-                        <option value="petugas" {{ $officer->level == "petugas" ? "selected" : '' }}>Petugas</option>
+                        <option value="1" {{ $officer->level == 1 ? "selected" : '' }}>Admin</option>
+                        <option value="2" {{ $officer->level == 2 ? "selected" : '' }}>Petugas</option>
                       </select>
                   </div>
                   <div class="mb-3">
@@ -47,7 +47,7 @@
                       <input type="text" name="officers_name" id="officer_name" class="form-control" value="{{ $officer->officers_name }}">
                   </div>
                   <button type="submit" class="btn btn-primary">Submit</button>
-                  <a href="" class="btn btn-danger">Batal</a>
+                  <a href="/officer" class="btn btn-danger">Batal</a>
               </form>
           </div>
       </div>
